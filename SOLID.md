@@ -71,3 +71,16 @@ choose one extension axis over another:
   with fixed-capacity storage or compile-time policies. That changes mechanics,
   not the dependency direction or responsibility boundaries.
 
+## SOLID in the connected GUI
+
+The wxWidgets application keeps the framework at the outer boundary:
+
+- `SimulationEngine` depends on `ILogger`, measurement-driver, cooling-strategy,
+  observer, and plain input/output abstractions rather than on GUI controls.
+- `MainFrame` translates user actions into Commands and renders Observer
+  snapshots; it does not implement plant or protection rules.
+- `DeviceFactory` is the composition root for concrete board drivers.
+- The existing `InverterController` is reused unchanged, demonstrating that the
+  domain State machine is independent of both wxWidgets and vcpkg.
+- `EmbeddedSimulatorTests` links only the core and checks every selectable device
+  combination without creating a native window.

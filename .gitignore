@@ -8,6 +8,7 @@ InverterStatePattern/x64/
 InverterStatePattern/Win32/
 EmbeddedPatternsCatalog/x64/
 EmbeddedPatternsCatalog/Win32/
+EmbeddedSimulator/Embedded.*/
 *.obj
 *.user
 *.suo
@@ -15,4 +16,5 @@ EmbeddedPatternsCatalog/Win32/
 # CMake-generated files when using an in-tree build directory
 build/
 out/
-
+vcpkg_installed/
+logs/

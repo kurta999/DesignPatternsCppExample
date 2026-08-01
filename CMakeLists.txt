@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.20)
 project(EmbeddedDesignPatterns LANGUAGES CXX)
 
+option(EMBEDDED_PATTERNS_BUILD_GUI "Build the wxWidgets simulation application" ON)
+
 add_executable(InverterStatePattern
     InverterStatePattern/src/InverterController.cpp
     InverterStatePattern/src/main.cpp)
@@ -35,17 +37,57 @@ add_executable(EmbeddedPatternsCatalog
 target_include_directories(EmbeddedPatternsCatalog PRIVATE
     EmbeddedPatternsCatalog/include InverterStatePattern/include)
 
+set(EMBEDDED_SIMULATOR_CORE_SOURCES
+    EmbeddedSimulator/src/SimulationTypes.cpp
+    EmbeddedSimulator/src/Logging.cpp
+    EmbeddedSimulator/src/DeviceFactory.cpp
+    EmbeddedSimulator/src/SimulationEngine.cpp
+    InverterStatePattern/src/InverterController.cpp)
+
+add_library(EmbeddedSimulatorCore STATIC ${EMBEDDED_SIMULATOR_CORE_SOURCES})
+target_include_directories(EmbeddedSimulatorCore PUBLIC
+    EmbeddedSimulator/include
+    InverterStatePattern/include)
+target_compile_features(EmbeddedSimulatorCore PUBLIC cxx_std_17)
+
+add_executable(EmbeddedSimulatorTests
+    EmbeddedSimulator/tests/SimulationEngineTests.cpp)
+target_link_libraries(EmbeddedSimulatorTests PRIVATE EmbeddedSimulatorCore)
+target_compile_features(EmbeddedSimulatorTests PRIVATE cxx_std_17)
+
+if(EMBEDDED_PATTERNS_BUILD_GUI)
+    find_package(wxWidgets CONFIG REQUIRED)
+    add_executable(EmbeddedSimulator WIN32
+        EmbeddedSimulator/src/gui/SimulatorApp.cpp
+        EmbeddedSimulator/src/gui/MainFrame.cpp)
+    target_link_libraries(EmbeddedSimulator PRIVATE
+        EmbeddedSimulatorCore
+        wx::core
+        wx::base)
+    target_compile_features(EmbeddedSimulator PRIVATE cxx_std_17)
+endif()
+
 target_compile_features(InverterStatePattern PRIVATE cxx_std_17)
 target_compile_features(EmbeddedPatternsCatalog PRIVATE cxx_std_17)
 if(MSVC)
     target_compile_options(InverterStatePattern PRIVATE /W4 /permissive-)
     target_compile_options(EmbeddedPatternsCatalog PRIVATE /W4 /WX /permissive-)
+    target_compile_options(EmbeddedSimulatorCore PRIVATE /W4 /WX /permissive-)
+    target_compile_options(EmbeddedSimulatorTests PRIVATE /W4 /WX /permissive-)
+    if(TARGET EmbeddedSimulator)
+        target_compile_options(EmbeddedSimulator PRIVATE /W4 /WX /permissive- /utf-8)
+    endif()
 else()
     target_compile_options(InverterStatePattern PRIVATE -Wall -Wextra -Wpedantic)
     target_compile_options(EmbeddedPatternsCatalog PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    target_compile_options(EmbeddedSimulatorCore PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    target_compile_options(EmbeddedSimulatorTests PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    if(TARGET EmbeddedSimulator)
+        target_compile_options(EmbeddedSimulator PRIVATE -Wall -Wextra -Wpedantic -Werror)
+    endif()
 endif()
 
 enable_testing()
 add_test(NAME inverter_state_scenarios COMMAND InverterStatePattern)
 add_test(NAME all_gof_pattern_scenarios COMMAND EmbeddedPatternsCatalog)
-
+add_test(NAME connected_simulator_engine_scenarios COMMAND EmbeddedSimulatorTests)

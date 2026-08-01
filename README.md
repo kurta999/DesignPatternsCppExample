@@ -7,6 +7,11 @@ and firmware update flows.
 
 ## Solution projects
 
+- **EmbeddedSimulator** is the connected wxWidgets GUI application. It combines
+  device factories, measurement drivers, the inverter State machine, cooling
+  strategies, observers, commands, fault injection, trends, and persistent logs.
+- **EmbeddedSimulatorTests** runs the wx-independent engine through all 32
+  hardware/strategy combinations and protection scenarios.
 - **EmbeddedPatternsCatalog** runs all 23 compact examples. Each pattern has its
   own `.cpp` file and a Creational, Structural, or Behavioral Visual Studio filter.
 - **InverterStatePattern** is a larger standalone example modeling DC-link
@@ -14,6 +19,9 @@ and firmware update flows.
   without heap allocation.
 
 Set `EmbeddedPatternsCatalog` as the startup project for the complete tour.
+Set `EmbeddedSimulator` as the startup project for the interactive application.
+See [`EmbeddedSimulator/README.md`](EmbeddedSimulator/README.md) for the GUI
+workflow and connected architecture.
 
 ## SOLID design
 
@@ -67,6 +75,8 @@ tradeoffs around Singleton, Visitor, and embedded runtime constraints.
 
 Open `EmbeddedDesignPatterns.sln` in Visual Studio 2022 and build the solution.
 Both `Debug`/`Release` and `Win32`/`x64` configurations are included.
+The GUI project enables vcpkg manifest mode and restores wxWidgets from the root
+`vcpkg.json`.
 
 ```powershell
 msbuild .\EmbeddedDesignPatterns.sln /p:Configuration=Debug /p:Platform=x64
@@ -79,10 +89,23 @@ Expected final line:
 All 23 GoF embedded pattern examples passed.
 ```
 
-## Optional CMake build
+For the GUI, select `EmbeddedSimulator` as the startup project. For a reproducible
+CMake/vcpkg build:
 
 ```powershell
-cmake -S . -B build
+$env:VCPKG_ROOT = 'C:\path\to\vcpkg'
+cmake --preset msvc-vcpkg-debug
+cmake --build --preset build-debug
+ctest --preset test-debug
+```
+
+## Headless-only CMake build
+
+If wxWidgets is intentionally unavailable, disable only the GUI; the simulator
+engine tests, pattern catalog, and State scenarios still build:
+
+```powershell
+cmake -S . -B build -DEMBEDDED_PATTERNS_BUILD_GUI=OFF
 cmake --build build
 ctest --test-dir build --output-on-failure
 ```
@@ -102,3 +125,8 @@ outputs on fault, and no OS or console dependency.
 Treat Singleton with suspicion. A hardware watchdog can have one legitimate
 owner; ordinary services usually benefit from explicit construction and injected
 references instead of hidden global state.
+
+The connected simulator reuses that controller rather than reimplementing its
+rules in the GUI. Its core contains no wxWidgets types, so the engine, drivers,
+plant model, strategies, logging, and fault behavior remain independently
+testable.
