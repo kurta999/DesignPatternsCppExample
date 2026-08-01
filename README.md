@@ -21,7 +21,9 @@ and firmware update flows.
 Set `EmbeddedPatternsCatalog` as the startup project for the complete tour.
 Set `EmbeddedSimulator` as the startup project for the interactive application.
 See [`EmbeddedSimulator/README.md`](EmbeddedSimulator/README.md) for the GUI
-workflow and connected architecture.
+workflow and connected architecture. The detailed
+[`EmbeddedSimulator` pattern map](docs/EmbeddedSimulatorPatterns.md) identifies
+the concrete participants and source files for every pattern used by the app.
 
 ## SOLID design
 
@@ -109,6 +111,29 @@ cmake -S . -B build -DEMBEDDED_PATTERNS_BUILD_GUI=OFF
 cmake --build build
 ctest --test-dir build --output-on-failure
 ```
+
+## Generate Doxygen documentation
+
+The repository contains a root [`Doxyfile`](Doxyfile) covering the GUI,
+wx-independent simulator core, State controller, tests, and all 23 catalog
+examples. Install Doxygen and make sure `doxygen` is available on `PATH`, then
+either run it directly:
+
+```powershell
+New-Item -ItemType Directory -Force .\out\docs | Out-Null
+doxygen .\Doxyfile
+```
+
+or use the documentation-only CMake preset:
+
+```powershell
+cmake --preset msvc-docs
+cmake --build --preset build-docs
+```
+
+Open `out/docs/html/index.html`. The generated output is intentionally ignored;
+the documented headers, implementation comments, pattern pages, and Doxygen
+configuration are the maintained sources.
 
 ## Embedded engineering notes
 

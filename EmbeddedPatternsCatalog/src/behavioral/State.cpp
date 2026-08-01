@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Catalog entry that exercises the allocation-free inverter State machine.
+ */
+
 #include "catalog/PatternDemo.hpp"
 #include "firmware/InverterController.hpp"
 
@@ -26,4 +31,3 @@ DemoResult runState()
             "The inverter progressed through precharge, contactor overlap, Ready, and Driving."};
 }
 }
-

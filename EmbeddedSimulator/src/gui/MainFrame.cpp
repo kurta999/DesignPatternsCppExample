@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief wxWidgets controls, trends, event translation, logging, and Observer updates.
+ */
+
 #include "gui/MainFrame.hpp"
 
 #include <wx/button.h>

@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Standalone scenarios for inverter startup, faults, and guarded reset.
+ */
+
 #include "firmware/InverterController.hpp"
 
 #include <cmath>
@@ -123,4 +128,3 @@ int main()
     std::cout << "All embedded State pattern scenarios passed.\n";
     return EXIT_SUCCESS;
 }
-

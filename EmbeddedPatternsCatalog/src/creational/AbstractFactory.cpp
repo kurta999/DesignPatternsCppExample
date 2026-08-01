@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Abstract Factory example selecting compatible ADC and CAN driver families.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <memory>
@@ -96,4 +101,3 @@ DemoResult runAbstractFactory()
     return {"Creational", "Abstract Factory", text.str()};
 }
 }
-

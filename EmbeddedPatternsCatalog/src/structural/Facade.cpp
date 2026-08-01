@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Facade example coordinating a safe firmware-update workflow.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <cstdint>

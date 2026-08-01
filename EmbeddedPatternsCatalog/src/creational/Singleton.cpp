@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Singleton example for a uniquely owned hardware watchdog.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <cstdint>

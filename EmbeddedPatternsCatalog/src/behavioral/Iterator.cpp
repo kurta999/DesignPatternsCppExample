@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Iterator example traversing a wrapped fault ring buffer chronologically.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <array>
@@ -65,4 +70,3 @@ DemoResult runIterator()
     return {"Behavioral", "Iterator", text.str()};
 }
 }
-

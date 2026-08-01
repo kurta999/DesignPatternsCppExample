@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Composite example operating on a hierarchical power tree.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <functional>
@@ -66,4 +71,3 @@ DemoResult runComposite()
             "One command recursively shut down the electronics branch and coolant pump."};
 }
 }
-

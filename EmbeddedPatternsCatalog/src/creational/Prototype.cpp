@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Prototype example cloning qualified pressure-channel calibration.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <cstdint>
@@ -49,4 +54,3 @@ DemoResult runPrototype()
     return {"Creational", "Prototype", text.str()};
 }
 }
-

@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Observer example publishing cell voltage to several consumers.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <algorithm>
@@ -76,4 +81,3 @@ DemoResult runObserver()
     return {"Behavioral", "Observer", text.str()};
 }
 }
-

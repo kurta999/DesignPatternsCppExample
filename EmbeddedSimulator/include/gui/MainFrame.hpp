@@ -1,5 +1,10 @@
 #pragma once
 
+/**
+ * @file MainFrame.hpp
+ * @brief wxWidgets composition root and primary simulator window.
+ */
+
 #include "simulator/Logging.hpp"
 #include "simulator/SimulationCommands.hpp"
 #include "simulator/SimulationEngine.hpp"
@@ -17,13 +22,26 @@ class wxTextCtrl;
 
 namespace simulator::gui
 {
+/** @addtogroup connected_simulator
+ *  @{
+ */
+/** @brief Custom time-series panel implemented privately by the GUI source. */
 class TrendPanel;
 
+/**
+ * @brief Main desktop window and Observer of simulation snapshots.
+ *
+ * The frame is the application composition root: it owns the Logger,
+ * SimulationEngine, Command queue, wx timer, and all widgets. wx event handlers
+ * translate user intent into core types and never implement controller policy.
+ */
 class MainFrame final : public wxFrame, public ISimulationObserver
 {
 public:
+    /** @brief Construct collaborators, build controls, bind events, and attach sinks. */
     MainFrame();
     ~MainFrame() override;
+    /** @brief Refresh readouts, gauges, and trends from one immutable snapshot. */
     void onSimulationSnapshot(const SimulationSnapshot& snapshot) override;
 
 private:
@@ -76,5 +94,5 @@ private:
     TrendPanel* trendPanel_{nullptr};
     wxTextCtrl* logText_{nullptr};
 };
+/** @} */
 } // namespace simulator::gui
-

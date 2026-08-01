@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Structured logger and persistent, memory, and callback sink implementations.
+ */
+
 #include "simulator/Logging.hpp"
 
 #include <fstream>
@@ -100,4 +105,3 @@ CallbackLogSink::CallbackLogSink(Callback callback) : callback_{std::move(callba
 }
 void CallbackLogSink::write(const LogRecord& record) { callback_(record); }
 } // namespace simulator
-

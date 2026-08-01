@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Template Method example reusing a safe sensor self-test sequence.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <cmath>
@@ -65,4 +70,3 @@ DemoResult runTemplateMethod()
     return {"Behavioral", "Template Method", text.str()};
 }
 }
-

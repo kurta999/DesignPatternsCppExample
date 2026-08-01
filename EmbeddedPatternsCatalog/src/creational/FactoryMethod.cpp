@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Factory Method example selecting concrete temperature probes.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <sstream>
@@ -65,4 +70,3 @@ DemoResult runFactoryMethod()
     return {"Creational", "Factory Method", text.str()};
 }
 }
-

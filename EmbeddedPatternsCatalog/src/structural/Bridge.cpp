@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Bridge example separating thermal alarms from their output transport.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <cstdint>
@@ -64,4 +69,3 @@ DemoResult runBridge()
     return {"Structural", "Bridge", text.str()};
 }
 }
-

@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Concrete board factories, measurement Adapter, and cooling Strategies.
+ */
+
 #include "simulator/DeviceFactory.hpp"
 
 #include <algorithm>
@@ -154,4 +159,3 @@ std::unique_ptr<ICoolingStrategy> DeviceFactory::createCoolingStrategy(const Coo
     throw std::invalid_argument("unsupported cooling mode");
 }
 } // namespace simulator
-

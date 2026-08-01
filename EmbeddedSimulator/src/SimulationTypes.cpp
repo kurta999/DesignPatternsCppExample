@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Human-readable conversion functions for simulator configuration enums.
+ */
+
 #include "simulator/SimulationTypes.hpp"
 
 namespace simulator
@@ -48,4 +53,3 @@ const char* toString(const CoolingMode value) noexcept
     return "Unknown cooling mode";
 }
 } // namespace simulator
-

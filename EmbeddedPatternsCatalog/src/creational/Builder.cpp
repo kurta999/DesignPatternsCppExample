@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Builder example assembling and validating a CAN-FD battery frame.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <array>
@@ -69,4 +74,3 @@ DemoResult runBuilder()
     return {"Creational", "Builder", text.str()};
 }
 }
-

@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Interpreter example composing a machine-start interlock rule.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <memory>
@@ -58,4 +63,3 @@ DemoResult runInterpreter()
             "Evaluated a composable start rule over pressure, temperature, and guard state."};
 }
 }
-

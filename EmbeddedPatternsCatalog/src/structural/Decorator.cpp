@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Decorator example layering sequence and CRC behavior on CAN transmission.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <cstdint>
@@ -72,4 +77,3 @@ DemoResult runDecorator()
     return {"Structural", "Decorator", text.str()};
 }
 }
-

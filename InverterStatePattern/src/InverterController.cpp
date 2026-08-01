@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Allocation-free inverter State machine and safety-transition implementation.
+ */
+
 #include "firmware/InverterController.hpp"
 
 #include <algorithm>
@@ -320,4 +325,3 @@ const char* toString(const FaultCode value) noexcept
     return "UnknownFault";
 }
 } // namespace inverter
-

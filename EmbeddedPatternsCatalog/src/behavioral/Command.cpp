@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Command example executing and undoing a drain-valve operation.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <cstddef>
@@ -67,4 +72,3 @@ DemoResult runCommand()
     return {"Behavioral", "Command", text.str()};
 }
 }
-

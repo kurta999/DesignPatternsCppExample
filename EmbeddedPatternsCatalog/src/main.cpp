@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Console runner for all 23 executable Gang of Four examples.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <array>
@@ -36,4 +41,3 @@ int main()
     std::cout << "\nAll 23 GoF embedded pattern examples passed.\n";
     return EXIT_SUCCESS;
 }
-

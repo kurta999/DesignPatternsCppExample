@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Flyweight example sharing immutable thermistor calibration.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <cmath>
@@ -67,4 +72,3 @@ DemoResult runFlyweight()
     return {"Structural", "Flyweight", text.str()};
 }
 }
-

@@ -20,6 +20,17 @@
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release"
       }
+    },
+    {
+      "name": "msvc-docs",
+      "displayName": "Doxygen documentation",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "cacheVariables": {
+        "EMBEDDED_PATTERNS_BUILD_GUI": "OFF",
+        "EMBEDDED_PATTERNS_BUILD_DOCS": "ON"
+      }
     }
   ],
   "buildPresets": [
@@ -32,6 +43,12 @@
       "name": "build-release",
       "configurePreset": "msvc-vcpkg-release",
       "configuration": "Release"
+    },
+    {
+      "name": "build-docs",
+      "configurePreset": "msvc-docs",
+      "configuration": "Debug",
+      "targets": ["documentation"]
     }
   ],
   "testPresets": [
@@ -43,4 +60,3 @@
     }
   ]
 }
-

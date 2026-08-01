@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Mediator example coordinating charger subsystems.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 namespace catalog::behavioral

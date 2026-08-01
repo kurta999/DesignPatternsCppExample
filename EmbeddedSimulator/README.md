@@ -55,6 +55,9 @@ Patterns used together:
 | Mediator | Coordinate plant, driver, controller, cooling, logging, and observers |
 | Dependency Injection | Supply logging and hardware capabilities through interfaces |
 
+For concrete participants, source locations, ownership, and end-to-end runtime
+flows, see [Design patterns inside EmbeddedSimulator](../docs/EmbeddedSimulatorPatterns.md).
+
 ## Typical simulation workflow
 
 1. Select the plant, control board, frontend, temperature sensor, and cooling
@@ -102,3 +105,10 @@ This is a deterministic engineering simulator, not a validated motor-drive or
 HIL plant model. Thresholds and sequencing are representative; do not use its
 outputs as production calibration data.
 
+## API and pattern documentation
+
+The detailed [pattern map](../docs/EmbeddedSimulatorPatterns.md) explains the
+participants, exact source locations, runtime collaboration, and ownership
+rules. The root Doxygen configuration includes the whole solution. From the
+repository root, run `doxygen Doxyfile` or use the `msvc-docs` and `build-docs`
+CMake presets, then open `out/docs/html/index.html`.

@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Strategy example switching battery fan policies.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <algorithm>
@@ -49,4 +54,3 @@ DemoResult runStrategy()
     return {"Behavioral", "Strategy", text.str()};
 }
 }
-

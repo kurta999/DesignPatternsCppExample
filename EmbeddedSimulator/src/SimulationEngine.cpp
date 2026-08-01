@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Facade and Mediator implementation for the connected plant simulation.
+ */
+
 #include "simulator/SimulationEngine.hpp"
 
 #include "simulator/DeviceFactory.hpp"
@@ -243,4 +248,3 @@ const SimulationSnapshot& SimulationEngine::snapshot() const noexcept { return i
 std::string SimulationEngine::driverDescription() const { return impl_->measurementDriver_->description(); }
 std::string SimulationEngine::coolingStrategyName() const { return impl_->cooling_->name(); }
 } // namespace simulator
-

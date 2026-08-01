@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Adapter example converting legacy ADC counts to physical voltage.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <cstdint>
@@ -51,4 +56,3 @@ DemoResult runAdapter()
     return {"Structural", "Adapter", text.str()};
 }
 }
-

@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Chain of Responsibility example prioritizing machine protection faults.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <optional>
@@ -51,4 +56,3 @@ DemoResult runChainOfResponsibility()
             "A protection chain reported overtemperature before lower-priority coolant pressure."};
 }
 }
-

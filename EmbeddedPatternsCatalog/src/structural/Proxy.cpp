@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Proxy example validating and caching commands to a remote CAN pump.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <cstdint>

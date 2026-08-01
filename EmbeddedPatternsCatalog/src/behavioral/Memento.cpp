@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Memento example rolling back invalid motor calibration.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <cmath>
@@ -45,4 +50,3 @@ DemoResult runMemento()
             "Rolled back an invalid motor gain to the known-good calibration."};
 }
 }
-

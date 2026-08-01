@@ -2,6 +2,17 @@ cmake_minimum_required(VERSION 3.20)
 project(EmbeddedDesignPatterns LANGUAGES CXX)
 
 option(EMBEDDED_PATTERNS_BUILD_GUI "Build the wxWidgets simulation application" ON)
+option(EMBEDDED_PATTERNS_BUILD_DOCS "Add the Doxygen HTML documentation target" OFF)
+
+if(EMBEDDED_PATTERNS_BUILD_DOCS)
+    find_package(Doxygen REQUIRED)
+    add_custom_target(documentation
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_SOURCE_DIR}/out/docs"
+        COMMAND ${DOXYGEN_EXECUTABLE} "${CMAKE_SOURCE_DIR}/Doxyfile"
+        WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
+        COMMENT "Generating complete Embedded Design Patterns API documentation"
+        VERBATIM)
+endif()
 
 add_executable(InverterStatePattern
     InverterStatePattern/src/InverterController.cpp

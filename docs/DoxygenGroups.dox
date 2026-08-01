@@ -1,0 +1,40 @@
+/**
+ * @file
+ * @brief Doxygen module and namespace descriptions for the complete solution.
+ */
+
+/**
+ * @defgroup connected_simulator Connected embedded simulator
+ * @brief Production-shaped desktop simulation core, GUI, drivers, logging, and tests.
+ */
+
+/**
+ * @defgroup inverter_state Inverter State controller
+ * @brief Allocation-free supervisory controller reused by the GUI simulator.
+ */
+
+/**
+ * @defgroup pattern_catalog Gang of Four pattern catalog
+ * @brief Executable embedded scenarios for every GoF design pattern.
+ */
+
+/**
+ * @namespace simulator
+ * @brief wx-independent types and services for the connected plant simulation.
+ */
+
+/**
+ * @namespace simulator::gui
+ * @brief wxWidgets presentation and application composition layer.
+ */
+
+/**
+ * @namespace inverter
+ * @brief Allocation-free inverter supervisory control and protection logic.
+ */
+
+/**
+ * @namespace catalog
+ * @brief Common contracts for the executable Gang of Four examples.
+ */
+

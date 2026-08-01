@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Embedded Visitor example auditing hardware and calculating its power budget.
+ */
+
 #include "catalog/PatternDemo.hpp"
 
 #include <cstddef>
@@ -98,4 +103,3 @@ DemoResult runVisitor()
     return {"Behavioral", "Visitor", text.str()};
 }
 }
-

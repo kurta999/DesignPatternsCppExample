@@ -10,6 +10,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EmbeddedSimulator", "Embedd
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EmbeddedSimulatorTests", "EmbeddedSimulator\EmbeddedSimulatorTests.vcxproj", "{C2D85E7F-4F3D-4A6B-A7D2-9E93695A2B10}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{0F649CB3-85F4-4A78-8F10-12364A77F31B}"
+	ProjectSection(SolutionItems) = preProject
+		Doxyfile = Doxyfile
+		README.md = README.md
+		SOLID.md = SOLID.md
+		docs\DoxygenGroups.dox = docs\DoxygenGroups.dox
+		docs\EmbeddedSimulatorPatterns.md = docs\EmbeddedSimulatorPatterns.md
+		EmbeddedSimulator\README.md = EmbeddedSimulator\README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

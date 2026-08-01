@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief Integration scenarios for every hardware combination and protection behavior.
+ */
+
 #include "simulator/Logging.hpp"
 #include "simulator/SimulationCommands.hpp"
 #include "simulator/SimulationEngine.hpp"
