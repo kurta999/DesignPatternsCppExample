@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files"><UniqueIdentifier>{1D8306C0-B389-4F89-8279-0278C0B42BAD}</UniqueIdentifier></Filter>
+    <Filter Include="Header Files"><UniqueIdentifier>{88D7EC24-2FD7-4C70-9D75-8967B9C7F4AF}</UniqueIdentifier></Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\InverterController.cpp"><Filter>Source Files</Filter></ClCompile>
+    <ClCompile Include="src\main.cpp"><Filter>Source Files</Filter></ClCompile>
+  </ItemGroup>
+  <ItemGroup><ClInclude Include="include\firmware\InverterController.hpp"><Filter>Header Files</Filter></ClInclude></ItemGroup>
+  <ItemGroup><None Include="..\README.md" /></ItemGroup>
+</Project>
+

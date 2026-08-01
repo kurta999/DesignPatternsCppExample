@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Entry Point"><UniqueIdentifier>{85501264-4468-4F8F-A269-0823CE80B81A}</UniqueIdentifier></Filter>
+    <Filter Include="Creational"><UniqueIdentifier>{5F9D9413-CBDD-4020-80D1-027760B1BB9A}</UniqueIdentifier></Filter>
+    <Filter Include="Structural"><UniqueIdentifier>{FB1CE878-D36C-4D83-852A-C4922C412CCF}</UniqueIdentifier></Filter>
+    <Filter Include="Behavioral"><UniqueIdentifier>{8CD21E66-71F3-4D8A-B411-F07638F670D0}</UniqueIdentifier></Filter>
+    <Filter Include="Shared"><UniqueIdentifier>{CA16058D-F3F6-453A-8C49-D99477848D3A}</UniqueIdentifier></Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp"><Filter>Entry Point</Filter></ClCompile>
+    <ClCompile Include="src\creational\AbstractFactory.cpp"><Filter>Creational</Filter></ClCompile><ClCompile Include="src\creational\Builder.cpp"><Filter>Creational</Filter></ClCompile><ClCompile Include="src\creational\FactoryMethod.cpp"><Filter>Creational</Filter></ClCompile><ClCompile Include="src\creational\Prototype.cpp"><Filter>Creational</Filter></ClCompile><ClCompile Include="src\creational\Singleton.cpp"><Filter>Creational</Filter></ClCompile>
+    <ClCompile Include="src\structural\Adapter.cpp"><Filter>Structural</Filter></ClCompile><ClCompile Include="src\structural\Bridge.cpp"><Filter>Structural</Filter></ClCompile><ClCompile Include="src\structural\Composite.cpp"><Filter>Structural</Filter></ClCompile><ClCompile Include="src\structural\Decorator.cpp"><Filter>Structural</Filter></ClCompile><ClCompile Include="src\structural\Facade.cpp"><Filter>Structural</Filter></ClCompile><ClCompile Include="src\structural\Flyweight.cpp"><Filter>Structural</Filter></ClCompile><ClCompile Include="src\structural\Proxy.cpp"><Filter>Structural</Filter></ClCompile>
+    <ClCompile Include="src\behavioral\ChainOfResponsibility.cpp"><Filter>Behavioral</Filter></ClCompile><ClCompile Include="src\behavioral\Command.cpp"><Filter>Behavioral</Filter></ClCompile><ClCompile Include="src\behavioral\Interpreter.cpp"><Filter>Behavioral</Filter></ClCompile><ClCompile Include="src\behavioral\Iterator.cpp"><Filter>Behavioral</Filter></ClCompile><ClCompile Include="src\behavioral\Mediator.cpp"><Filter>Behavioral</Filter></ClCompile><ClCompile Include="src\behavioral\Memento.cpp"><Filter>Behavioral</Filter></ClCompile><ClCompile Include="src\behavioral\Observer.cpp"><Filter>Behavioral</Filter></ClCompile><ClCompile Include="src\behavioral\State.cpp"><Filter>Behavioral</Filter></ClCompile><ClCompile Include="src\behavioral\Strategy.cpp"><Filter>Behavioral</Filter></ClCompile><ClCompile Include="src\behavioral\TemplateMethod.cpp"><Filter>Behavioral</Filter></ClCompile><ClCompile Include="src\behavioral\Visitor.cpp"><Filter>Behavioral</Filter></ClCompile>
+    <ClCompile Include="..\InverterStatePattern\src\InverterController.cpp"><Filter>Behavioral</Filter></ClCompile>
+  </ItemGroup>
+  <ItemGroup><ClInclude Include="include\catalog\PatternDemo.hpp"><Filter>Shared</Filter></ClInclude><ClInclude Include="..\InverterStatePattern\include\firmware\InverterController.hpp"><Filter>Behavioral</Filter></ClInclude></ItemGroup>
+  <ItemGroup><None Include="..\README.md" /></ItemGroup>
+</Project>
+

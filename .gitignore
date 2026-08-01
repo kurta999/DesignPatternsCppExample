@@ -1,0 +1,18 @@
+# Visual Studio and host-side verification outputs
+.vs/
+.build/
+.msbuild-temp/
+x64/
+Win32/
+InverterStatePattern/x64/
+InverterStatePattern/Win32/
+EmbeddedPatternsCatalog/x64/
+EmbeddedPatternsCatalog/Win32/
+*.obj
+*.user
+*.suo
+
+# CMake-generated files when using an in-tree build directory
+build/
+out/
+

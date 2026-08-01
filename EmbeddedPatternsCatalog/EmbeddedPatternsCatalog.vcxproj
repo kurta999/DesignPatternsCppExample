@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32"><Configuration>Debug</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32"><Configuration>Release</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion><Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{F4A2A9AC-0C7A-4FC5-9F5B-2D52E126C8D1}</ProjectGuid>
+    <RootNamespace>EmbeddedPatternsCatalog</RootNamespace><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType><UseDebugLibraries>true</UseDebugLibraries><PlatformToolset>v143</PlatformToolset><CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType><UseDebugLibraries>false</UseDebugLibraries><PlatformToolset>v143</PlatformToolset><WholeProgramOptimization>true</WholeProgramOptimization><CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" /><ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets"><Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" /></ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+    <ClCompile><WarningLevel>Level4</WarningLevel><TreatWarningAsError>true</TreatWarningAsError><SDLCheck>true</SDLCheck><AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)InverterStatePattern\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories><PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions><ConformanceMode>true</ConformanceMode><LanguageStandard>stdcpp17</LanguageStandard></ClCompile>
+    <Link><SubSystem>Console</SubSystem><GenerateDebugInformation>true</GenerateDebugInformation></Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <ClCompile><WarningLevel>Level4</WarningLevel><TreatWarningAsError>true</TreatWarningAsError><FunctionLevelLinking>true</FunctionLevelLinking><IntrinsicFunctions>true</IntrinsicFunctions><SDLCheck>true</SDLCheck><AdditionalIncludeDirectories>$(ProjectDir)include;$(SolutionDir)InverterStatePattern\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories><PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions><ConformanceMode>true</ConformanceMode><LanguageStandard>stdcpp17</LanguageStandard></ClCompile>
+    <Link><SubSystem>Console</SubSystem><EnableCOMDATFolding>true</EnableCOMDATFolding><OptimizeReferences>true</OptimizeReferences><GenerateDebugInformation>true</GenerateDebugInformation></Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\creational\AbstractFactory.cpp" /><ClCompile Include="src\creational\Builder.cpp" /><ClCompile Include="src\creational\FactoryMethod.cpp" /><ClCompile Include="src\creational\Prototype.cpp" /><ClCompile Include="src\creational\Singleton.cpp" />
+    <ClCompile Include="src\structural\Adapter.cpp" /><ClCompile Include="src\structural\Bridge.cpp" /><ClCompile Include="src\structural\Composite.cpp" /><ClCompile Include="src\structural\Decorator.cpp" /><ClCompile Include="src\structural\Facade.cpp" /><ClCompile Include="src\structural\Flyweight.cpp" /><ClCompile Include="src\structural\Proxy.cpp" />
+    <ClCompile Include="src\behavioral\ChainOfResponsibility.cpp" /><ClCompile Include="src\behavioral\Command.cpp" /><ClCompile Include="src\behavioral\Interpreter.cpp" /><ClCompile Include="src\behavioral\Iterator.cpp" /><ClCompile Include="src\behavioral\Mediator.cpp" /><ClCompile Include="src\behavioral\Memento.cpp" /><ClCompile Include="src\behavioral\Observer.cpp" /><ClCompile Include="src\behavioral\State.cpp" /><ClCompile Include="src\behavioral\Strategy.cpp" /><ClCompile Include="src\behavioral\TemplateMethod.cpp" /><ClCompile Include="src\behavioral\Visitor.cpp" />
+    <ClCompile Include="..\InverterStatePattern\src\InverterController.cpp" />
+  </ItemGroup>
+  <ItemGroup><ClInclude Include="include\catalog\PatternDemo.hpp" /><ClInclude Include="..\InverterStatePattern\include\firmware\InverterController.hpp" /></ItemGroup>
+  <ItemGroup><None Include="..\README.md" /></ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" /><ImportGroup Label="ExtensionTargets" />
+</Project>
+
