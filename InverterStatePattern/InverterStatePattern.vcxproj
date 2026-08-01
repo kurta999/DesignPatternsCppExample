@@ -38,7 +38,6 @@
   </ItemDefinitionGroup>
   <ItemGroup><ClCompile Include="src\InverterController.cpp" /><ClCompile Include="src\main.cpp" /></ItemGroup>
   <ItemGroup><ClInclude Include="include\firmware\InverterController.hpp" /></ItemGroup>
-  <ItemGroup><None Include="..\README.md" /></ItemGroup>
+  <ItemGroup><None Include="..\README.md" /><None Include="..\SOLID.md" /></ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" /><ImportGroup Label="ExtensionTargets" />
 </Project>
-

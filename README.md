@@ -15,6 +15,14 @@ and firmware update flows.
 
 Set `EmbeddedPatternsCatalog` as the startup project for the complete tour.
 
+## SOLID design
+
+The examples are reviewed against SRP, OCP, LSP, ISP, and DIP. Pattern names alone
+do not guarantee good design, so hardware-facing policy depends on narrow
+interfaces and concrete drivers remain at the composition boundary. See
+[`SOLID.md`](SOLID.md) for the complete pattern-by-pattern mapping and the honest
+tradeoffs around Singleton, Visitor, and embedded runtime constraints.
+
 ## Pattern index
 
 ### Creational
@@ -81,8 +89,8 @@ ctest --test-dir build --output-on-failure
 
 ## Embedded engineering notes
 
-Patterns are vocabulary, not targets. Use one when it removes real coupling or
-conditional complexity. The catalog uses standard containers, smart pointers,
+Patterns and SOLID are design tools, not targets. Use them when they remove real
+coupling or conditional complexity. The catalog uses standard containers, smart pointers,
 exceptions, and virtual calls to make each pattern obvious on a PC. On a
 constrained target, consider fixed-capacity containers, statically allocated
 object graphs, error-return types, and compile-time strategies.
@@ -94,4 +102,3 @@ outputs on fault, and no OS or console dependency.
 Treat Singleton with suspicion. A hardware watchdog can have one legitimate
 owner; ordinary services usually benefit from explicit construction and injected
 references instead of hidden global state.
-

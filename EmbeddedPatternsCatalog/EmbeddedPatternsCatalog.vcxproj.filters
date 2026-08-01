@@ -15,6 +15,5 @@
     <ClCompile Include="..\InverterStatePattern\src\InverterController.cpp"><Filter>Behavioral</Filter></ClCompile>
   </ItemGroup>
   <ItemGroup><ClInclude Include="include\catalog\PatternDemo.hpp"><Filter>Shared</Filter></ClInclude><ClInclude Include="..\InverterStatePattern\include\firmware\InverterController.hpp"><Filter>Behavioral</Filter></ClInclude></ItemGroup>
-  <ItemGroup><None Include="..\README.md" /></ItemGroup>
+  <ItemGroup><None Include="..\README.md" /><None Include="..\SOLID.md" /></ItemGroup>
 </Project>
-

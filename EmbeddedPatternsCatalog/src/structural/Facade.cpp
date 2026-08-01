@@ -9,19 +9,39 @@ namespace catalog::structural
 {
 namespace
 {
-class SafetyInterlock
+class IUpdateSafety
 {
 public:
-    bool permitsUpdate(const bool ignition, const bool contactors) const noexcept
+    virtual ~IUpdateSafety() = default;
+    virtual bool permitsUpdate(bool ignition, bool contactors) const noexcept = 0;
+};
+class IImageStorage
+{
+public:
+    virtual ~IImageStorage() = default;
+    virtual bool eraseInactiveSlot() noexcept = 0;
+    virtual bool program(const std::vector<std::uint8_t>& image) noexcept = 0;
+};
+class IBootSlotSelector
+{
+public:
+    virtual ~IBootSlotSelector() = default;
+    virtual void selectInactiveSlot() noexcept = 0;
+};
+
+class SafetyInterlock final : public IUpdateSafety
+{
+public:
+    bool permitsUpdate(const bool ignition, const bool contactors) const noexcept override
     {
         return !ignition && !contactors;
     }
 };
-class FlashMemory
+class FlashMemory final : public IImageStorage
 {
 public:
-    bool eraseInactiveSlot() noexcept { erased_ = true; return true; }
-    bool program(const std::vector<std::uint8_t>& image) noexcept
+    bool eraseInactiveSlot() noexcept override { erased_ = true; return true; }
+    bool program(const std::vector<std::uint8_t>& image) noexcept override
     {
         if (!erased_ || image.empty()) return false;
         checksum_ = std::accumulate(image.begin(), image.end(), std::uint32_t{0U});
@@ -32,20 +52,21 @@ private:
     bool erased_{false};
     std::uint32_t checksum_{0U};
 };
-class BootConfiguration
+class BootConfiguration final : public IBootSlotSelector
 {
 public:
-    void selectInactiveSlot() noexcept { selected_ = true; }
+    void selectInactiveSlot() noexcept override { selected_ = true; }
     bool selected() const noexcept { return selected_; }
 private:
     bool selected_{false};
 };
-// Provides one ordered, safe update operation instead of exposing subsystems.
+// SRP: the Facade owns update sequencing only. DIP/ISP: it depends on three small
+// capability interfaces, so target flash and boot-control drivers are replaceable.
 class FirmwareUpdateFacade
 {
 public:
-    FirmwareUpdateFacade(SafetyInterlock& safety, FlashMemory& flash,
-                         BootConfiguration& boot) noexcept
+    FirmwareUpdateFacade(IUpdateSafety& safety, IImageStorage& flash,
+                         IBootSlotSelector& boot) noexcept
         : safety_{safety}, flash_{flash}, boot_{boot} {}
     bool install(const std::vector<std::uint8_t>& image, const bool ignition,
                  const bool contactors) noexcept
@@ -56,9 +77,9 @@ public:
         return true;
     }
 private:
-    SafetyInterlock& safety_;
-    FlashMemory& flash_;
-    BootConfiguration& boot_;
+    IUpdateSafety& safety_;
+    IImageStorage& flash_;
+    IBootSlotSelector& boot_;
 };
 }
 DemoResult runFacade()
@@ -75,4 +96,3 @@ DemoResult runFacade()
     return {"Structural", "Facade", text.str()};
 }
 }
-

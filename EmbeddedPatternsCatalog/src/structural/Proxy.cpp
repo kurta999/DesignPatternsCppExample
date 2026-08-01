@@ -10,10 +10,17 @@ namespace catalog::structural
 {
 namespace
 {
-class CanBus
+class ICanCommandTransport
 {
 public:
-    void transmitSpeed(const std::uint8_t node, const std::int16_t rpm)
+    virtual ~ICanCommandTransport() = default;
+    virtual void transmitSpeed(std::uint8_t node, std::int16_t rpm) = 0;
+};
+
+class CanBus final : public ICanCommandTransport
+{
+public:
+    void transmitSpeed(const std::uint8_t node, const std::int16_t rpm) override
     {
         transmissions_.push_back({node, rpm});
     }
@@ -29,11 +36,13 @@ public:
     virtual void setSpeedRpm(std::int16_t rpm) = 0;
     virtual std::optional<std::int16_t> commandedSpeedRpm() const noexcept = 0;
 };
-// Represents a remote drive locally while enforcing limits and caching commands.
+// LSP: the proxy honors IMotorDrive's contract. DIP: it emits commands through a
+// transport port rather than depending on a specific CAN driver implementation.
 class CanMotorDriveProxy final : public IMotorDrive
 {
 public:
-    CanMotorDriveProxy(CanBus& bus, const std::uint8_t node) noexcept : bus_{bus}, node_{node} {}
+    CanMotorDriveProxy(ICanCommandTransport& bus, const std::uint8_t node) noexcept
+        : bus_{bus}, node_{node} {}
     void setSpeedRpm(const std::int16_t rpm) override
     {
         if (rpm < 0 || rpm > 6'000) throw std::out_of_range("unsafe pump speed");
@@ -43,7 +52,7 @@ public:
     }
     std::optional<std::int16_t> commandedSpeedRpm() const noexcept override { return cached_; }
 private:
-    CanBus& bus_;
+    ICanCommandTransport& bus_;
     std::uint8_t node_;
     std::optional<std::int16_t> cached_{};
 };
@@ -61,4 +70,3 @@ DemoResult runProxy()
     return {"Structural", "Proxy", text.str()};
 }
 }
-

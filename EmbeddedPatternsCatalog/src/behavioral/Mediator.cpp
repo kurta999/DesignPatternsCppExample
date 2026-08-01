@@ -11,11 +11,18 @@ public:
     virtual ~IMediator() = default;
     virtual void notify(Event event) noexcept = 0;
 };
-class ChargeContactor
+class IChargeContactor
 {
 public:
-    void close() noexcept { closed_ = true; }
-    void open() noexcept { closed_ = false; }
+    virtual ~IChargeContactor() = default;
+    virtual void close() noexcept = 0;
+    virtual void open() noexcept = 0;
+};
+class ChargeContactor final : public IChargeContactor
+{
+public:
+    void close() noexcept override { closed_ = true; }
+    void open() noexcept override { closed_ = false; }
     bool isClosed() const noexcept { return closed_; }
 private:
     bool closed_{false};
@@ -38,11 +45,12 @@ public:
 private:
     IMediator& mediator_;
 };
-// Components do not reference one another; this coordinator owns their policy.
+// SRP: the coordinator owns interaction policy only. DIP: it commands a narrow
+// contactor abstraction, while pilot and thermal components depend on IMediator.
 class ChargingCoordinator final : public IMediator
 {
 public:
-    explicit ChargingCoordinator(ChargeContactor& contactor) noexcept : contactor_{contactor} {}
+    explicit ChargingCoordinator(IChargeContactor& contactor) noexcept : contactor_{contactor} {}
     void notify(const Event event) noexcept override
     {
         switch (event)
@@ -55,7 +63,7 @@ public:
         if (pilot_ && thermalSafe_) contactor_.close(); else contactor_.open();
     }
 private:
-    ChargeContactor& contactor_;
+    IChargeContactor& contactor_;
     bool pilot_{false};
     bool thermalSafe_{false};
 };
@@ -75,4 +83,3 @@ DemoResult runMediator()
             "A coordinator coupled pilot and thermal events without subsystem dependencies."};
 }
 }
-
